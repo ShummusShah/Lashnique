@@ -10,6 +10,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Inline slideshow styles (self-contained, overrides any stale cached styles.css) -->
+  <style>
+    .split-image {
+      position: relative !important; overflow: hidden !important;
+      aspect-ratio: 1 / 1; min-height: 460px;
+      background: linear-gradient(135deg, #1a6669, #0f5052);
+    }
+    .split-image::before { content: none !important; }
+    .split-image .placeholder-text {
+      position: absolute; inset: 0; display: grid; place-items: center;
+      font-family: 'Playfair Display', Georgia, serif; font-style: italic;
+      letter-spacing: 6px; color: #c9a961; font-size: 1rem;
+      text-align: center; padding: 2rem; z-index: 1;
+    }
+    .split-image .slide {
+      position: absolute !important; inset: 0 !important;
+      width: 100% !important; height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      opacity: 0; transition: opacity 1s ease-in-out;
+      z-index: 2; max-width: none !important;
+    }
+    /* Fallback for users with JS disabled — show first slide */
+    .split-image .slide:first-of-type { opacity: 1; }
+    .split-image .slide.is-active { opacity: 1; }
+  </style>
 </head>
 <body>
 
@@ -99,11 +126,17 @@
     </div>
   </section>
 
-  <!-- Appointments Split -->
+  <!-- Appointments Split with Slideshow -->
   <section class="appointments-split">
     <div class="container">
       <div class="split-grid">
-        <div class="split-image"></div>
+        <div class="split-image">
+          <div class="placeholder-text">SLIDESHOW &mdash; ADD 3 IMAGES</div>
+          <!-- Replace these src filenames with your photos placed in the images/ folder. -->
+          <img class="slide" src="images/slide-1.jpg" alt="Lashnique studio" onerror="this.style.display='none'" />
+          <img class="slide" src="images/slide-2.jpg" alt="Lashnique lash work" onerror="this.style.display='none'" />
+          <img class="slide" src="images/slide-3.jpg" alt="Lashnique appointment" onerror="this.style.display='none'" />
+        </div>
         <div class="split-content">
           <span class="eyebrow">Appointments</span>
           <h2>Lashes Made Just For You</h2>
@@ -178,7 +211,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="appointments.html">Treatments</a></li>
-              </ul>
+          </ul>
         </div>
 
         <div>
@@ -207,6 +240,62 @@
       </div>
     </div>
   </footer>
+
+  <!-- Slideshow rotation -->
+  <script>
+    (function () {
+      var wrap = document.querySelector('.split-image');
+      if (!wrap) return;
+      var placeholder = wrap.querySelector('.placeholder-text');
+      var allSlides = [].slice.call(wrap.querySelectorAll('img.slide'));
+      var loaded = [];
+      var active = 0;
+      var timer = null;
+      var ROTATION_MS = 5000;
+
+      function show(idx) {
+        for (var i = 0; i < loaded.length; i++) {
+          if (i === idx) loaded[i].classList.add('is-active');
+          else loaded[i].classList.remove('is-active');
+        }
+      }
+
+      function startRotation() {
+        if (loaded.length < 2 || timer) return;
+        timer = setInterval(function () {
+          active = (active + 1) % loaded.length;
+          show(active);
+        }, ROTATION_MS);
+      }
+
+      allSlides.forEach(function (img) {
+        var counted = false;
+        function onOk() {
+          if (counted) return;
+          counted = true;
+          loaded.push(img);
+          if (loaded.length === 1) {
+            if (placeholder) placeholder.style.display = 'none';
+            // remove the static fallback opacity so transitions work
+            allSlides.forEach(function (other) { other.style.opacity = ''; });
+            show(0);
+          } else {
+            startRotation();
+          }
+        }
+        function onFail() {
+          img.style.display = 'none';
+        }
+        img.addEventListener('load', onOk);
+        img.addEventListener('error', onFail);
+        // Cached image already loaded before listener was attached
+        if (img.complete) {
+          if (img.naturalWidth > 0) onOk();
+          else onFail();
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
