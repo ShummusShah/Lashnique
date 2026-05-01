@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact &mdash; Lashnique</title>
+  <meta name="description" content="Get in touch with Lashnique &mdash; for appointments, questions, or anything else." />
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container"><strong>Now Booking</strong> &nbsp;&middot;&nbsp; Masterclass Slots Available &nbsp;&middot;&nbsp; Limited Availability</div>
+  </div>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo" aria-label="Lashnique home">
+        <img src="images/logo-horizontal.svg" alt="Lashnique - Pure Lash Mastery" />
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="appointments.html">Treatments</a></li>
+        <li><a href="book.html" target="_blank" rel="noopener noreferrer" class="nav-cta">Book Now</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <span class="eyebrow">Get In Touch</span>
+      <h1>Contact Us</h1>
+      <div class="divider"></div>
+      <p>For appointments, questions or to say hello.</p>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow">We&rsquo;d Love To Hear From You</span>
+          <h2 style="margin-bottom: 1.5rem;">Studio Details</h2>
+
+          <div class="info-row">
+            <div class="label">Book Online</div>
+            <p><a href="book.html" target="_blank" rel="noopener noreferrer" style="color:var(--teal-deep);">Book on Fresha &rarr;</a></p>
+          </div>
+
+          <div class="info-row">
+            <div class="label">Studio Address</div>
+            <p>Lashnique<br />Unit 4, Clifton House<br />Merridale Road<br />Wolverhampton, England</p>
+          </div>
+
+          <div class="info-row">
+            <div class="label">Opening Hours</div>
+            <p>By appointment only<br />See Fresha for live availability</p>
+          </div>
+
+          <div class="info-row" style="border-bottom:0;">
+            <div class="label">Social</div>
+            <div class="socials" style="margin-top:0.6rem;">
+              <a href="https://www.instagram.com/lashnique/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:var(--gold);border-color:var(--gold);">IG</a>
+              <a href="https://www.facebook.com/lashniquesalon" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:var(--gold);border-color:var(--gold);">FB</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! We will be in touch shortly.');">
+          <h3 style="margin-bottom: 1.5rem;">Send Us A Message</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="topic">I&rsquo;m Enquiring About</label>
+            <select id="topic" name="topic">
+              <option>A New Lash Set</option>
+              <option>An Infill Appointment</option>
+              <option>Korean Lash Lift</option>
+              <option>Eyelash Removal</option>
+              <option>Patch Test</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="Tell us a little about what you have in mind&hellip;"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+
+          <p style="font-size: 0.85rem; color: var(--muted); margin-top: 1rem; text-align: center;">For the fastest response, book directly via <a href="book.html" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">Fresha</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-horizontal.svg" alt="Lashnique" />
+          <p>Pure lash mastery &mdash; bespoke lash artistry from a luxury studio in Wolverhampton.</p>
+          <div class="socials">
+            <a href="https://www.instagram.com/lashnique/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+            <a href="https://www.facebook.com/lashniquesalon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="appointments.html">Treatments</a></li>
+              </ul>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li>Lashnique</li>
+            <li>Unit 4, Clifton House</li>
+            <li>Merridale Road</li>
+            <li>Wolverhampton, England</li>
+            <li>By appointment only</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Book</h4>
+          <ul>
+            <li><a href="book.html" target="_blank" rel="noopener noreferrer">Book On Fresha</a></li>
+            <li>5.0 &#9733; on Fresha (283 reviews)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Lashnique &mdash; Pure Lash Mastery. All rights reserved. &nbsp;|&nbsp;
+        <a href="#">Privacy</a> &nbsp;|&nbsp; <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
