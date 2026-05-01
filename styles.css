@@ -486,12 +486,13 @@ section { padding: 5rem 0; }
 
 .split-image {
   background: linear-gradient(135deg, var(--teal-soft), var(--teal-deep));
+  aspect-ratio: 1 / 1;
   min-height: 460px;
   position: relative;
+  overflow: hidden;
 }
 
-.split-image::before {
-  content: 'APPOINTMENTS';
+.split-image .placeholder-text {
   position: absolute;
   inset: 0;
   display: grid;
@@ -501,7 +502,28 @@ section { padding: 5rem 0; }
   letter-spacing: 8px;
   color: var(--gold);
   font-size: 1.4rem;
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
 }
+
+/* Slideshow (rotation handled by JS in index.html) */
+.split-image .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 2;
+  max-width: none;
+}
+
+/* Fallback for no-JS: show first slide */
+.split-image .slide:first-of-type { opacity: 1; }
+.split-image .slide.is-active { opacity: 1; }
 
 .split-content {
   background: var(--cream);
